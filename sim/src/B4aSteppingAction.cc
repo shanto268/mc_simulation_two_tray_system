@@ -109,11 +109,14 @@ void B4aSteppingAction::UserSteppingAction(const G4Step* step)
   auto motherPhysical = touchable->GetVolume(1); // mother
   auto motherCopyNo = motherPhysical->GetCopyNo();
   auto motherName = motherPhysical->GetName();
+  auto stepl = step->GetStepLength();  //Changed by SAS 29/11
 
   auto thisPhysical = touchable->GetVolume(); // mother
   auto thisCopyNo = thisPhysical->GetCopyNo();
   auto thisName = thisPhysical->GetName();
   
+// Comment begin - SAS 29/11
+/*
 
   if(depth==4) {
     double stepl = step->GetStepLength();
@@ -121,6 +124,10 @@ void B4aSteppingAction::UserSteppingAction(const G4Step* step)
    // std::cout << "Layer number: " << motherName << std::endl;
    // std::cout << "Channel ID: " << thisName << " " << thisCopyNo << "\n\n";
  }
+
+*/
+//Comment end - SAS 29/11
+
 
 //		std::cout<<"UserSteppingAction starting   rpdebug3... "<<std::endl;
 /*
@@ -141,7 +148,7 @@ void B4aSteppingAction::UserSteppingAction(const G4Step* step)
 //		std::cout<<"UserSteppingAction starting   rpdebug4... "<<std::endl;
   if(thisName.compare(0,4,"sBAR")==0)  {
     // std::cout<<"Stepaction calling AddBAR"<<std::endl;
-    fEventAction->AddSBAR(edep,motherCopyNo,thisCopyNo);
+    fEventAction->AddSBAR(stepl,edep,motherCopyNo,thisCopyNo);  //changed by SAS 29/11
     // std::cout<<"   returned from AddBAR"<<std::endl;
   }
 

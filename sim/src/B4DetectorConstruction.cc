@@ -678,7 +678,7 @@ G4VPhysicalVolume* B4DetectorConstruction::DefineVolumes()
 //  angle=-50.0*M_PI/180.0;   // no camera rotation.
 //  angle=50.0*M_PI/180.0;   // no camera rotation.
 //  angle=0.0;   // no camera rotation.
-double  angle=45.0*M_PI/180.0;   // no camera rotation.
+double  angle=0.0*M_PI/180.0;   // no camera rotation.  //SAS comment: viewing angle of the detector
 //  angle=-45.0*M_PI/180.0;   // no camera rotation.
 //  angle=-30.0*M_PI/180.0;   // no camera rotation.
   //  angle=-30.0*M_PI/180.0;   // no camera rotation.

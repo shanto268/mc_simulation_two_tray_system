@@ -44,7 +44,7 @@
 #/vis/viewer/set/auxiliaryEdge true
 #
 # Draw coordinate axes:
-/vis/scene/add/axes 0 0 0 1 m
+#/vis/scene/add/axes 0 0 0 1 m
 #
 # Draw smooth trajectories at end of event, showing trajectory points
 # as markers 2 pixels wide:
@@ -71,7 +71,7 @@
 /vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
 # To select or override default colours (note: e+ is blue by default):
 /vis/modeling/trajectories/list
-#/vis/modeling/trajectories/drawByParticleID-0/set e+ yellow
+#/vis/modeling/trajectories/drawByParticleID-0/set e+ blue
 #
 # To superimpose all of the events from a given run:
 /vis/scene/endOfEventAction accumulate
@@ -83,10 +83,17 @@
 # For file-based drivers, use this to create an empty detector view:
 #/vis/viewer/flush
 
-/vis/viewer/set/viewpointThetaPhi  50 270
-/vis/viewer/zoom 1.4
+
+#frames for holistic sim
+#/vis/viewer/set/viewpointThetaPhi  50 270
+#/vis/viewer/zoom 1.4
+
+#frames for bird eye view detector
+/vis/viewer/set/viewpointThetaPhi 0 0
+/vis/viewer/panTo -29 0
+/vis/viewer/zoomTo 25
 
 # Some info needed to visualize the detector better
-/vis/viewer/panTo -29 -15
-/vis/viewer/zoom 15
+#/vis/viewer/panTo -29 -15
+#/vis/viewer/zoom 15
 

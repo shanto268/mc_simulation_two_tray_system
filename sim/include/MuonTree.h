@@ -60,12 +60,20 @@ class MuonTree{
       float  mEdepS2[MAXCHAN];
       float  mEdepS3[MAXCHAN];
       float  mEdepS4[MAXCHAN];
+      float  mSteplS1[MAXCHAN]; //changed by SAS 29/11
+      float  mSteplS2[MAXCHAN]; //changed by SAS 29/11
+      float  mSteplS3[MAXCHAN]; //changed by SAS 29/11
+      float  mSteplS4[MAXCHAN]; //changed by SAS 29/11
 
       int   mNTray;
       float  mEdepT1;
       float  mEdepT2;
       float  mEdepT3;
       float  mEdepT4;
+      float  mSteplT1; //changed by SAS 29/11
+      float  mSteplT2; //changed by SAS 29/11
+      float  mSteplT3; //changed by SAS 29/11
+      float  mSteplT4; //changed by SAS 29/11
       
 //      float mEdepWater;
 //      float mLengthWater;

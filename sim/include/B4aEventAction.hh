@@ -56,7 +56,7 @@ class B4aEventAction : public G4UserEventAction
     
     void AddGenParticle(SC8Particle aSC8particle);
     void AddHitsRef1(SC8Particle aSC8particle);
-    void AddSBAR(double de, int indexTray, int indexSBAR);
+    void AddSBAR(double step, double de, int indexTray, int indexSBAR); //changed by SAS 29/11
     void UpdateMuontk(SC8Particle aSC8particle);
     
   private:
@@ -92,7 +92,7 @@ inline void B4aEventAction::UpdateMuontk(SC8Particle aSC8Particle) {
           // std::cout<<"  edepOld "<<edepOld;
           // std::cout<<"  edepNew "<<edepNew;
           // std::cout<<std::endl;
-          aSC8Particle.steplength=stepOld+stepNew;
+          aSC8Particle.steplength=stepOld+stepNew; //SAS comment: defines steplength here for the SC8Particle class
           aSC8Particle.edep=edepOld+edepNew;
           // update step length and edep
           vecSC8muontk[n-1]=aSC8Particle;
@@ -115,11 +115,17 @@ inline void B4aEventAction::AddHitsRef1(SC8Particle aSC8Particle) {
 //     std::cout<<"rpdebug- B4aEventAction::AddHitsRef1   end..."<<std::endl;
 }
 
-inline void B4aEventAction::AddSBAR(double de, int indexTray, int indexSBAR) {
+inline void B4aEventAction::AddSBAR(double step, double de, int indexTray, int indexSBAR) { //SAS comment: pass on steplength as param
   // std::cout<<"inline void B4aEventAction::AddSBAR"<<std::endl;
   int idx=indexTray*10+indexSBAR;
-  if(idx>-1 && idx<40) edepSc8.SBAR[idx] += de;
-  if(indexTray>-1 && indexTray<4) edepSc8.TRAY[indexTray] +=de;
+  if(idx>-1 && idx<40){
+        edepSc8.SBAR[idx] += de;
+        edepSc8.MStepBar[idx] += step; //changed by SAS 29/11
+    }
+  if(indexTray>-1 && indexTray<4){
+        edepSc8.TRAY[indexTray] +=de;
+        edepSc8.MStepTray[indexTray] += step; //changed by SAS 29/11
+    }
   // std::cout<<"inline void B4aEventAction::AddSBAR, end."<<std::endl;
 }
 

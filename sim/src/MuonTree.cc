@@ -43,6 +43,12 @@ MuonTree::MuonTree(int dummy){
    histo1D["all_EdepT2"]=new TH1D("all_EdepT2","Edep in T2 (all)",100,0.,50.0);
    histo1D["all_EdepT3"]=new TH1D("all_EdepT3","Edep in T3 (all)",100,0.,50.0);
    histo1D["all_EdepT4"]=new TH1D("all_EdepT4","Edep in T4 (all)",100,0.,50.0);
+   histo1D["all_SteplT1"]=new TH1D("all_SteplT1","Muon Step Length in T1 (all) (mm)",100,0.,75.0); //changed by SAS 27/11
+   histo1D["all_SteplT2"]=new TH1D("all_SteplT2","Muon Step Length in T2 (all) (mm)",100,0.,75.0); //changed by SAS 27/11
+   histo1D["all_SteplT3"]=new TH1D("all_SteplT3","Muon Step Length in T3 (all) (mm)",100,0.,75.0); //changed by SAS 27/11
+   histo1D["all_SteplT4"]=new TH1D("all_SteplT4","Muon Step Length in T4 (all) (mm)",100,0.,75.0); //changed by SAS 27/11
+
+
 
    histo1D["trig_nGen"]=new TH1D("trig_nGen","N of Gen Particles (trig)",40,0.,40.0);
    histo1D["trig_GenPid"]=new TH1D("trig_GenPid","Gen Particle ID (trig)",40,-20.0,20.0);
@@ -52,13 +58,17 @@ MuonTree::MuonTree(int dummy){
    histo1D["trig_GenPyPz"]=new TH1D("trig_GenPyPz","slopeY, py/pz (trig)",100,-2.0,2.0);
    histo1D["trig_GenPtPz"]=new TH1D("trig_GenPtPz","slope, pt/pz (trig)",100,0.0,1.0);
 
-   histo1D["all_muon_step"]=new TH1D("all_muon_step","Muon Step Length (mm)",100,0.,75.0); //changed by SAS 27/11
    histo1D["scint_muon_step"]=new TH1D("scint_muon_step","Muon Step Length (mm)",100,0.,75.0); //changed by SAS 27/11
 
    histo1D["trig_EdepT1"]=new TH1D("trig_EdepT1","Edep in T1 (trig)",100,0.,50.0);
    histo1D["trig_EdepT2"]=new TH1D("trig_EdepT2","Edep in T2 (trig)",100,0.,50.0);
    histo1D["trig_EdepT3"]=new TH1D("trig_EdepT3","Edep in T3 (trig)",100,0.,50.0);
-   histo1D["trig_EdepT4"]=new TH1D("trig_EdepT4","Edep in T4 (all)",100,0.,50.0);
+   histo1D["trig_EdepT4"]=new TH1D("trig_EdepT4","Edep in T4 (trig)",100,0.,50.0);
+   histo1D["trig_SteplT1"]=new TH1D("trig_SteplT1","Muon Step Length in T1 (trig) (mm)",100,0.,75.0); //changed by SAS 27/11
+   histo1D["trig_SteplT2"]=new TH1D("trig_SteplT2","Muon Step Length in T2 (trig) (mm)",100,0.,75.0); //changed by SAS 27/11
+   histo1D["trig_SteplT3"]=new TH1D("trig_SteplT3","Muon Step Length in T3 (trig) (mm)",100,0.,75.0); //changed by SAS 27/11
+   histo1D["trig_SteplT4"]=new TH1D("trig_SteplT4","Muon Step Length in T4 (trig) (mm)",100,0.,75.0); //changed by SAS 27/11
+
    histo1D["trig_Tray1Muonhits"]=new TH1D("trig_Tray1Muonhits","number of hits in Tray 1",100,0.,50.0);
 
    histo1D["trig_muontracklengthtank"]=new TH1D("trig_muontracklengthtank","Muon TKLen in Tank",100.0,0.,100.0);  
@@ -90,13 +100,22 @@ MuonTree::MuonTree(int dummy){
     tree->Branch("EdepS2"       ,mEdepS2     , "EdepS2[nBar]/F");
     tree->Branch("EdepS3"       ,mEdepS3     , "EdepS3[nBar]/F");
     tree->Branch("EdepS4"       ,mEdepS4     , "EdepS4[nBar]/F");
+    tree->Branch("SteplS1"      ,mSteplS1    , "SteplS1[nBar]/F"); //Changed by SAS 29/11 
+    tree->Branch("SteplS2"      ,mSteplS2    , "SteplS2[nBar]/F"); //changed by SAS 29/11 
+    tree->Branch("SteplS3"      ,mSteplS3    , "SteplS3[nBar]/F"); //changed by SAS 29/11
+    tree->Branch("SteplS4"      ,mSteplS4    , "SteplS4[nBar]/F"); //changed by SAS 29/11
+
 
     tree->Branch("nTray"     ,&mNTray     , "nTray/I" );
     tree->Branch("EdepT1"       ,&mEdepT1     , "EdepT1/F");
     tree->Branch("EdepT2"       ,&mEdepT2     , "EdepT2/F");
     tree->Branch("EdepT3"       ,&mEdepT3     , "EdepT3/F");
     tree->Branch("EdepT4"       ,&mEdepT4     , "EdepT4/F");
-    
+    tree->Branch("SteplT1"      ,&mSteplT1    , "SteplT1/F"); //Changed by SAS 29/11 
+    tree->Branch("SteplT2"      ,&mSteplT2    , "SteplT2/F"); //changed by SAS 29/11
+    tree->Branch("SteplT3"      ,&mSteplT3    , "SteplT3/F"); //changed by SAS 29/11
+    tree->Branch("SteplT4"      ,&mSteplT4    , "SteplT4/F"); //changed by SAS 29/11
+
 //    tree->Branch("EdepWater"        ,&mEdepWater      , "EdepWater/F");
 //    tree->Branch("LengthWater"		 ,&mLengthWater    , "LengthWater/F");
 //	tree->Branch("EdepWall"		 ,&mEdepWall	   , "EdepWall");
@@ -140,7 +159,7 @@ void MuonTree::analyze(SC8edep edepSc8, vector<SC8Particle> part,
      vector<SC8Particle> muontk  ){
 
   bool trig=false;
-  double ecut=1.0; // cut on edep in each layer (in MeV)
+  double ecut=1.0; // cut on in each layer (in MeV)
   mTrigger=0;
   for(int i=0; i<2; i++) {
 	//  cout << "Energy deposit of Tray " << i << " is " << edepSc8.TRAY[i] << endl; //commented out SAS 27/11
@@ -163,13 +182,13 @@ void MuonTree::analyze(SC8edep edepSc8, vector<SC8Particle> part,
      mGenParVx[i]=part[i].x;
      mGenParVy[i]=part[i].y;
      mGenParVz[i]=part[i].z;
-     mMuonLength[i]=part[i].steplength;	 //changed by SAS 27/11
+   //  mMuonLength[i]=part[i].steplength;	 //changed by SAS 27/11
    
      //   2/2 triggered events
      if(trig) {
         histo1D["trig_GenPid"]->Fill(mGenParId[i]);
         if(mGenParId[i]==13 || mGenParId[i]==-13) {
-	       histo1D["scint_muon_step"]->Fill(mMuonLength[i]);
+	     //  histo1D["scint_muon_step"]->Fill(mMuonLength[i]); //changed by SAS 29/11
            histo1D["trig_GenPmu"]->Fill(mGenParP[i]);
            histo1D["trig_GenPxPz"]->Fill(mGenParPx[i]/mGenParPz[i]);
            histo1D["trig_GenPyPz"]->Fill(mGenParPy[i]/mGenParPz[i]);
@@ -179,7 +198,7 @@ void MuonTree::analyze(SC8edep edepSc8, vector<SC8Particle> part,
         }
      }
      // all events
-	 histo1D["all_muon_step"]->Fill(mMuonLength[i]);
+   //	 histo1D["all_muon_step"]->Fill(mMuonLength[i]);  //changed by SAS 29/11
      histo1D["all_GenPid"]->Fill(mGenParId[i]);
      if(mGenParId[i]==13 || mGenParId[i]==-13) {
         histo1D["all_GenPmu"]->Fill(mGenParP[i]);
@@ -194,12 +213,14 @@ void MuonTree::analyze(SC8edep edepSc8, vector<SC8Particle> part,
   mNBar=10;
   for(int i=0; i<mNBar; i++) {
     int j=i+0;
-    mEdepS1[i]=edepSc8.SBAR[j];
+    mEdepS1[i]=edepSc8.SBAR[j];  
+    mSteplS1[i]=edepSc8.MStepBar[j]; //changed by SAS 29/11    
   }
   for(int i=0; i<mNBar; i++) {
     int j=i+10;
     mEdepS2[i]=edepSc8.SBAR[j];
-  }
+    mSteplS2[i]=edepSc8.MStepBar[j]; //changed by SAS 29/11    
+   }
  
  /*
   for(int i=0; i<mNBar; i++) {
@@ -217,8 +238,12 @@ void MuonTree::analyze(SC8edep edepSc8, vector<SC8Particle> part,
   mEdepT2=edepSc8.TRAY[1];
 //  mEdepT3=edepSc8.TRAY[2];
 //  mEdepT4=edepSc8.TRAY[3];
+  mSteplT1=edepSc8.MStepTray[0]; //changed by SAS 29/11
+  mSteplT2=edepSc8.MStepTray[1]; //changed by SAS 29/11
+
 
   if(trig) {
+//SAS Comment: plotting all histo for triggered Edep events
      histo1D["trig_EdepT1"]->Fill(mEdepT1);
      histo1D["trig_EdepT1"]->GetXaxis()->SetTitle("Energy Deposit [MeV]");
      histo1D["trig_EdepT1"]->GetYaxis()->SetTitle("Number of Events");
@@ -231,13 +256,22 @@ void MuonTree::analyze(SC8edep edepSc8, vector<SC8Particle> part,
 //     histo1D["trig_EdepT4"]->Fill(mEdepT4);
 //     histo1D["trig_EdepT4"]->GetXaxis()->SetTitle("Energy Deposit [MeV]");
 //     histo1D["trig_EdepT4"]->GetYaxis()->SetTitle("Number of Events");
+
+//SAS Comment: plotting all histo for triggered Stepl events
+     histo1D["trig_SteplT1"]->Fill(mSteplT1); //changed by SAS 29/11
+     histo1D["trig_SteplT1"]->GetXaxis()->SetTitle("Muon Step Length [mm]"); //changed by SAS 29/11
+     histo1D["trig_SteplT1"]->GetYaxis()->SetTitle("Number of Events");//changed by SAS 29/11
+     histo1D["trig_SteplT2"]->Fill(mSteplT2);//changed by SAS 29/11
+     histo1D["trig_SteplT2"]->GetXaxis()->SetTitle("Muon Step Length [mm]");//changed by SAS 29/11
+     histo1D["trig_SteplT2"]->GetYaxis()->SetTitle("Number of Events");//changed by SAS 29/11
 	 }
   
   histo1D["all_EdepT1"]->Fill(mEdepT1);
   histo1D["all_EdepT2"]->Fill(mEdepT2);
 //  histo1D["all_EdepT3"]->Fill(mEdepT3);
 //  histo1D["all_EdepT4"]->Fill(mEdepT4);
-  
+  histo1D["all_SteplT1"]->Fill(mSteplT1); //changed by SAS 29/11
+  histo1D["all_SteplT2"]->Fill(mSteplT2); //changed by SAS 29/11
 
   //   Hits in Tray 1
   mNHitsR1=hitsR1.size();
@@ -256,7 +290,6 @@ void MuonTree::analyze(SC8edep edepSc8, vector<SC8Particle> part,
      mHitsR1Vy[i]=hitsR1[i].y;
      mHitsR1Vz[i]=hitsR1[i].z;
      }
-  // Muon particle track length???????
   mNMuons=muontk.size();
   if( mNMuons>0) {
   for(int i=0; i<mNMuons; i++){

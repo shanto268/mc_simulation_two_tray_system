@@ -68,8 +68,14 @@ B4aEventAction::~B4aEventAction()
 void B4aEventAction::BeginOfEventAction(const G4Event* /*event*/)
 {  
   // initialization per event
-  for(int i=0; i<20; i++) {edepSc8.SBAR[i]=0.0;}
-  for(int i=0; i<2; i++) {edepSc8.TRAY[i]=0.0;}
+  for(int i=0; i<20; i++) {
+    edepSc8.SBAR[i]=0.0;
+    edepSc8.MStepBar[i]=0.0; //changed by SAS 29/11
+    }
+  for(int i=0; i<2; i++) {
+    edepSc8.TRAY[i]=0.0;
+    edepSc8.MStepTray[i]=0.0; //changed by SAS 29/11
+    }
   vecSC8Particle.clear();
   vecSC8HitsRef1.clear();
   vecSC8muontk.clear(); 

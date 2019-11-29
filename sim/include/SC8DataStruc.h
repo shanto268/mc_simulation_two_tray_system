@@ -12,12 +12,14 @@ struct SC8Particle {
    double y;
    double z;
    double steplength;
-   double edep;
+   double edep; 
 };
 
 struct SC8edep {
   double SBAR[20];
   double TRAY[2];
+  double MStepBar[20]; // changed by SAS 29/11 //array to store the step lengths of muons in the scintillator bars
+  double MStepTray[2]; // changed by SAS 29/11 //array to store the step lengths of muons in the trays
 //  double mEdepWater;
 //  float mEdepWall;
 //  float mLengthWater;

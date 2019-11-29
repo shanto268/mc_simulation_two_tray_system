@@ -325,15 +325,19 @@ void CRYGenerator::genEvent(std::vector<CRYParticle*> *retList) {
       int charge=(int)_chargePdfs[idSec]->draw(_utils,sBin);
 
       double u,v,w;
-    //  w=_cosThetaPdfs[idSec]->draw(_utils,sBin);
+    //  w=_cosThetaPdfs[idSec]->draw(_utils,sBin); //SAS comment the viewing vector
     
         w = 0.89; // changed by SAS 27/11 
       double maxV=sqrt(1.0-w*w);
-    //  double rand_num = _utils->randomFlat();
-    //  double rand_num = 0.125;
+    //  double rand_num = _utils->randomFlat(); //SAS comment: random num gen 
+    //  double rand_num = 0.125; //SAS comment: random num
     //  double tphi=rand_num*2.0*M_PI; //changed by SAS 26/11
-      double tphi= 1.308996939;
-    //  std::cout << "w vector: " << w << endl;
+        double tphi = 0.5*M_PI; //SAS comment: 0 deg
+    //  double tphi= 0.7853981633974483; //SAS comment: 45 deg
+    //  double tphi= 0.9599310885968813; //SAS comment: 55 deg
+    //  double tphi= 1.1344640137963142; //SAS comment: 65 deg
+    //  double tphi= 1.3089969389957472; //SAS comment: 75 deg
+      //  std::cout << "w vector: " << w << endl;
       std::cout << "\nThe angle is: " << tphi*(180.0/M_PI) << " deg"<< endl;
      // std::cout << "The random number is: " << rand_num << endl; 
      // std::cout <<"\n" ;
