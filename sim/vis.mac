@@ -6,7 +6,11 @@
 #
 # Use this open statement to create an OpenGL view:
 /vis/open OGL 600x600-0+0
-#
+
+#/vis/open OGLI
+
+#/vis/open OGLSQt
+
 # Use this open statement to create an OpenInventor view:
 #/vis/open OIX
 #
@@ -97,3 +101,13 @@
 #/vis/viewer/panTo -29 -15
 #/vis/viewer/zoom 15
 
+
+/vis/viewer/panTo 0 0
+/vis/viewer/zoomTo 1
+/vis/viewer/set/viewpointThetaPhi 40 -90
+
+
+#Lateral view
+/vis/viewer/set/viewpointThetaPhi 90 -90
+/vis/viewer/zoom 50
+/vis/viewer/zoomTo 1

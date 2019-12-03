@@ -210,6 +210,38 @@ G4VPhysicalVolume* B4DetectorConstruction::DefineVolumes()
                  0,                // copy number
                  fCheckOverlaps);  // checking overlaps 
   
+  /*
+  //    
+  // Ground
+  //  
+
+  double groundSizeX = 6000.0*cm ;  // half width
+  double groundSizeY = 3000.0*cm ;  // half width
+  double groundSizeZ = 800.0*cm ;  // half width
+
+  auto groundS 
+    = new G4Box("Ground",           // its name
+                 groundSizeX, groundSizeY, groundSizeZ); // its size
+    
+  auto groundLV
+    = new G4LogicalVolume(
+                 groundS,           // its solid
+                 defaultMaterial,  // its material
+                 "Ground");         // its name
+    
+  auto groundPV
+    = new G4PVPlacement(
+                 0,                // no rotation
+                 G4ThreeVector(0,0,-80),  // at (0,0,0)
+                 groundLV,          // its logical volume                         
+                 "Ground",          // its name
+                 worldLV,                // its mother  volume
+                 false,            // no boolean operation
+                 0,                // copy number
+                 fCheckOverlaps);  // checking overlaps 
+
+  */
+
   //
   // Tower
   //
@@ -274,11 +306,11 @@ G4VPhysicalVolume* B4DetectorConstruction::DefineVolumes()
 //rp, spherical shell water inside tank end
 
 
-  double p2Rminwat = 0.0;  // Inner radius
-  double p2Rmaxwat = p2Rmax - 0.25*2.54*cm;  // Outer radius
-  double p2DZwat = p2DZ - 0.25*2.54*cm;  // Starting Phi angle of the segment in radians
-  double p2SPhiwat = 0.0;  // Delta Phi angle of the segment in radians
-  double p2DPhiwat = 2*M_PI;  // Starting Theta angle of the segment in radians
+ // double p2Rminwat = 0.0;  // Inner radius //commented out SAS
+ // double p2Rmaxwat = p2Rmax - 0.25*2.54*cm;  // Outer radius //commented out SAS
+//  double p2DZwat = p2DZ - 0.25*2.54*cm;  // Starting Phi angle of the segment in radians //commented out SAS
+//  double p2SPhiwat = 0.0;  // Delta Phi angle of the segment in radians  //commented out SAS
+//  double p2DPhiwat = 2*M_PI;  // Starting Theta angle of the segment in radians  //commented out SAS
 
   double p3Rminwat = 0.0;
   double p3Rmaxwat = p3Rmax - 0.25*2.54*cm;
@@ -349,10 +381,10 @@ G4VPhysicalVolume* B4DetectorConstruction::DefineVolumes()
 
 //rp, box for subtraction from bottom sphere for water start
 
-  double length = 60.0*30.0*0.5*cm;
-  double width = 60.0*30.0*0.5*cm;
+//  double length = 60.0*30.0*0.5*cm; //commented out SAS
+ // double width = 60.0*30.0*0.5*cm; //commented out SAS
 //  double height = 24.0*30.0*0.5*cm;  // 13 ft water from bottom of tank
-  double height = 5.0*30.0*0.5*cm;  // 20 ft water from bottom of tank
+//  double height = 5.0*30.0*0.5*cm;  // 20 ft water from bottom of tank //commented out SAS
 //rp, box for subtraction from bottome of sphere for water end
 
 //rp, box for subtraxtion from top of sphere for air start
@@ -366,7 +398,7 @@ G4VPhysicalVolume* B4DetectorConstruction::DefineVolumes()
 //rp, box for sub from top air end
   
   auto tankMaterial  = G4Material::GetMaterial("iron");
-  auto tubeMaterial  = G4Material::GetMaterial("iron");
+//  auto tubeMaterial  = G4Material::GetMaterial("iron"); //commented out SAS
   auto waterMaterial  = G4Material::GetMaterial("Water");
 
   auto TowerS
@@ -823,7 +855,7 @@ auto RefPlane1LV
   worldLV->SetVisAttributes(G4VisAttributes::GetInvisible());
 
 //  TowerLV->SetVisAttributes(G4VisAttributes::GetInvisible());
-  SC8LV->SetVisAttributes(G4VisAttributes::GetInvisible());
+//  SC8LV->SetVisAttributes(G4VisAttributes::GetInvisible());  //SAS
 //  Station1LV->SetVisAttributes(G4VisAttributes::GetInvisible()); 
 //  Tray1LV->SetVisAttributes(G4VisAttributes::GetInvisible());
 //  Tank1LV->SetVisAttributes(G4VisAttributes::GetInvisible());
@@ -838,23 +870,24 @@ auto RefPlane1LV
 //  ftwaterLV->SetVisAttributes(G4VisAttributes::GetInvisible());
 
   
+//  groundLV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.45,0.25,0.0))); // blue //SAS
   Station1LV->SetVisAttributes(G4VisAttributes::GetInvisible());
-//  worldLV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,0.0,1.0))); // blue
-  TowerLV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(1.0,0.0,0.0))); // red
-  Tank3LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,1.0,0.0))); //  green
-  Tank1LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,1.0,0.0))); //  green
-  WatTank1LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(1.0,0.0,0.0))); // red
-  WatTank2LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(1.0,0.0,0.0))); // blue
-  Tank2LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,1.0,0.0))); //  green
+  worldLV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,0.0,1.0))); // blue //SAS
+ // TowerLV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(1.0,0.0,0.0))); // red //SAS
+  Tank3LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.5, 0.5, 0.5))); //  red
+  Tank1LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.5, 0.5, 0.5))); //  red
+  WatTank1LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.5, 0.5, 0.5))); // red
+  WatTank2LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,0.0,1.0))); // blue
+  Tank2LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.5, 0.5, 0.5))); //  green
   WatTank3LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,0.0,1.0))); //  blue
 //  WatTank21LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,.0,1.0))); //  blue
 //  ftwaterLV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(1.0,0.0,0.0))); //  blue
 //  AIRTankUnionLV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,0.0,1.0))); //  blue
-  tubeLV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,1.0,0.0))); // green
+  tubeLV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.5, 0.5, 0.5))); // green
 //  tubeWaterLV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,0.0,1.0))); // blue
-//  SC8LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.45,0.25,0.0)));
-  // Box1LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,1.0,0.0))); // 
-//  Station1LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,1.0,0.0)));
+ // SC8LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.45,0.25,0.0)));  
+ // Box1LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,1.0,0.0))); 
+  Station1LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,1.0,0.0)));  //SAS
   Tray1LV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(0.0,0.0,0.0)));
   sBARLV->SetVisAttributes(new G4VisAttributes(TRUE,G4Colour(1.0,0.0,0.0)));
 

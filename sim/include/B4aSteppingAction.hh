@@ -54,8 +54,7 @@ public:
   virtual void UserSteppingAction(const G4Step* step);
     
 private:
-  const B4DetectorConstruction* fDetConstruction;
-
+  const B4DetectorConstruction* fDetConstruction;  
   void PrintStep(const G4Step* step);
   void FillRefPlane(const G4Step* step, int iflag);
   SC8Particle FillSC8Particle(const G4Step* step);  // fill it at given step.
